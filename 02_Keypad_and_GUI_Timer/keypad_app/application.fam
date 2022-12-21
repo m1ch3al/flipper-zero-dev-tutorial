@@ -1,0 +1,13 @@
+App(
+  appid="keypad_app",
+  # this field will be showed on the Flip.x0 FAP browser
+  name="Keypad FAP",
+  apptype=FlipperAppType.EXTERNAL,
+  entry_point="main_fap",
+  stack_size=1 * 1024,
+  # Where the application will be stored into the Flip.x0
+  fap_category="Examples",
+  # This is needed if I have some images
+  #fap_icon_assets="images",
+  fap_icon="icon.png",
+)
