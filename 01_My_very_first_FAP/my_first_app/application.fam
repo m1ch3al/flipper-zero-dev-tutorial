@@ -1,0 +1,23 @@
+# COMPILE ISTRUCTIONS:
+
+# Clean the code and remove old binaries/compilation artefact 
+# ./fbt -c fap_my_first_app
+
+# Compile FAP
+# ./fbt fap_my_first_app
+
+# Run application directly inside the Flip.x0
+# ./fbt launch_app APPSRC=my_first_app
+
+App(
+    # Foldername of the application
+    appid="my_first_app",
+    # name will be show on the Flip.x0 browser
+    name="My First App",
+    apptype=FlipperAppType.EXTERNAL,
+    # Main function (entry point) of the application  
+    entry_point="my_first_app_main",
+    stack_size=1 * 1024,
+    # Where the application will be stored into the Flip.x0
+    fap_category="Examples",
+)
