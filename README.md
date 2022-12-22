@@ -31,7 +31,7 @@ If you don't what is a manifest, don't worry: this is a simple text (ascii) file
 Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be will be analyzed individually, allowing you to implement the functionality of all the statements.
 
 # icon.png
-![This is an image](/assets/images/flipper_icons.png) 
+![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png) 
 
  
 
