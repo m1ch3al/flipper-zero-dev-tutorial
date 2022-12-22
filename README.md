@@ -1,6 +1,6 @@
 ## Flipper Zero dev tutorial with examples.
 A fun journey to discover Flipper Zero and how FAP (Flipper-zero APplication) are developed.
-
+![title](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/title.png?raw=true)
 > VERY IMPORTANT:
 > Most likely I will write some bullshit: feel free to clone my repository, try, change and why not, improve my code.
 
