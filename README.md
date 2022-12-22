@@ -71,13 +71,38 @@ The content of the application.fam is the following:
 	        entry_point="my_first_app_main",
 	        stack_size=1 * 1024,
 	        fap_category="Examples",
+	        
+	        # Added for explanation
+	        fap_icon_assets="images",
+	        fap_icon="icon.png",
 	    )    
 Let's analyze now all the declaration of the fam.
 ## appid
 This instruction helps your Flip.x0 the identify your FAP inside all the ecosystem.
 The **appid** has to be unique, otherwise during compilation phase, the compiler **(fbt)** will throw an error.
-  
- 
- 
+My suggestion is to choose a name that could be understand easily.
 
+## name
+ This field represents the string that will be displayed on your Flip.x0 when you'll use the browser, as shown in the image below.
+![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/fam_name.png?raw=true)
+
+## apptype
+This directive specified which kind of FAP you want to create.
+At the moment, the documentation is very poor and I only found four types of **apptype**:
+ - FlipperAppType.PLUGIN
+ - FlipperAppType.EXTERNAL
+ - FlipperAppType.SETTINGS
+ - FlipperAppType.METAPACKAGE
+ 
+  **PLUGIN** is used if you want to create FAP as *plugin* to interact with of Flip.x0. 
+ The plugins are compiled into the kernel and will be flashed as part of the firmware in the main SoC, furthermore writing plugins require the developer to edit/maintain `/applications/meta/applications.fam`
+ 
+  **EXTERNAL** is used (as in this case) for delopy FAP 
+ The compiled FAP are separate programs and you can store the build verion inside the microSD.
+
+**SETTINGS**
+to continue...
+
+** METAPACKAGE **
+to continue...
 
