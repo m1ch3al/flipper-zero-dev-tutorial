@@ -19,7 +19,7 @@ A FAP (Flipperzero APplication) has a particular filesystem structure like this:
         ├── [images] (type: folder, optional)
         │      └── {all the images required by the FAP}
         │
-        ├── FAP-name.c (type: text file, optional)
+        ├── main.c (type: text file, optional)
         └── {others .c/.h files used by the FAP}
 
 Let's analyze all the part of the FAP:
@@ -31,10 +31,30 @@ If you don't what is a manifest, don't worry: this is a simple text (ascii) file
 Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be will be analyzed individually, allowing you to implement the functionality of all the statements.
 
 # icon.png
-![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png) 
+When you powered on your Flip.x0, probably you saw a many FAP in the various menu of the system.
+Every FAP has a name and an icon: that's meaning you can personalize  your app as you want.
+![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png?raw=true)
+Just for convenience, in this tutorial, I will use the name **icon.png** for the small FAP icons we'll created together, but feel free to change the name of the file and obliviously inside the application.fam (we will also see this later).
+Remember that the declaration of an icon for a FAP, is not necessary: when you'll compile your application, the icon will be not showed in the list and you will see only the name with a blank space on the left.  
 
- 
+# README (.md)
+I don't want to dwell too much on this part: everybody knows (probably if you develop software) the importance of a README file especially if you want to distribute your FAP using the most common channels like GitHub or other kind of online repository management system.
 
+# images (folder)
+if you FAP need to display some images, that it's a good reason for keep all the resources organized inside a folder. In the same way, feel free to change the name of this folder as you prefer, but remember to change the name in the application.fam.
+
+ # main.c
+ Somewhere, the main function will be defined, right?
+ During the compilation phase, the SCons system will check the content of all the .c files inside your FAP folder and it will recognize the name of the main function (declared inside the application.fam).
+So...it's better to keep the code organized: it doesn't matter the names of the .c files inside you FAP application: the important thing (for your convenience) is to have a .c file with an easily recognizable name that allow you to understand where is the main entry of the application.
+If you know the C language, probably you well understood who am I referring to:
+
+    int main(int argc,  char  *argv[])  {
+        // Do something here...
+        return 0;  
+    }
+For the Flipper Zero Application, we need the same thing.
+Keep calm: we will see later in details.
 
 
 https://ilin.pt/stuff/fui-editor/
