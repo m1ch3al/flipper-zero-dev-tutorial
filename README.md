@@ -204,5 +204,27 @@ once the repository is cloned, enter inside the firmware folder and explore what
     drwxrwxr-x  3 user user    4096 dic 18 14:11 toolchain
     drwxrwxr-x  3 user user    4096 dic 18 14:13 .vscode
 
-it will be possible to notice an executable file inside the firmware folder called **fbt**: that will be the core of our entertainment.
+it will be possible to notice an executable file inside the firmware folder called **fbt** *that is the core of our entertainment*.
 For more information about **fbt** please use the following link: [https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md)
+As you can read from the documentation, **fbt** stands for ***F**lipper **B**uild **T**ool* and it's the entry point for firmware-related commands and utilities. It is invoked by `./fbt` in the firmware project root directory. Internally, it is a wrapper around the [SCons](https://scons.org/) build system.
+
+### Visual Studio Code integration (optional)
+Personally, for the development of the IoT firmware, I am very happy with Visual Studio Code, but you can use what you prefer.
+`fbt`  includes basic development environment configuration for VSCode. 
+To deploy it, run  `./fbt vscode_dist` from the folder of the Flip.x0 firmware. 
+That will copy initial environment configuration to  `.vscode`  folder. After that, you can use that configuration by starting VSCode and choosing firmware root folder in "File > Open Folder" menu.
+
+-   On first start, you'll be prompted to install recommended plug-ins. Please install them for best development experience.  _You can find a list of them in  `.vscode/extensions.json`._
+-   Basic build tasks are invoked in Ctrl+Shift+B menu.
+-   Debugging requires a supported probe. That includes:
+    -   Wi-Fi devboard with stock firmware (blackmagic),
+    -   ST-Link and compatible devices,
+    -   J-Link for flashing and debugging (in VSCode only).  _Note that J-Link tools are not included with our toolchain and you have to  [download](https://www.segger.com/downloads/jlink/)  them yourself and put on your system's PATH._
+-   Without a supported probe, you can install firmware on Flipper using USB installation method.
+
+## Prepare the environment for our first FAP :)
+Finally it's time to fill out our first application: for this part of the tutorial, I will use **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** as a reference code.
+Navigate into the folder tree of the Flip.x0 firmware and enter inside `application_user` folder.
+
+**TO CONTINUE**
+
