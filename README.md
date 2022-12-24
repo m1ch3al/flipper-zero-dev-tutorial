@@ -299,3 +299,9 @@ After some time the Flipper Build Tool will call a script called `runfap.py` and
 
   
 **2) Copy the .fap file inside your Flip.x0 and run the application manually**
+Locate your .fap binary reading the output of the compilation phase, in my case the file was created into this folder and the full path is :
+
+    [your_working_folder]/flipperzero-firmware/build/f7-firmware-C/.extapps/my_first_app.fap
+
+Launch the qFlipper application, select the file-manager and drag 'n' drop the file into the folder `Examples` (just for keep all the stuff organized) like in the image below.
+![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/copy_fap.png?raw=true)
