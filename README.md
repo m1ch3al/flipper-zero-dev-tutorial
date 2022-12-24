@@ -222,9 +222,69 @@ That will copy initial environment configuration to  `.vscode`  folder. After th
     -   J-Link for flashing and debugging (in VSCode only).  _Note that J-Link tools are not included with our toolchain and you have to  [download](https://www.segger.com/downloads/jlink/)  them yourself and put on your system's PATH._
 -   Without a supported probe, you can install firmware on Flipper using USB installation method.
 
-## Prepare the environment for our first FAP :)
+## Prepare the environment and compile our first FAP :)
 Finally it's time to fill out our first application: for this part of the tutorial, I will use **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** as a reference code.
 Navigate into the folder tree of the Flip.x0 firmware and enter inside `application_user` folder.
+Copy the folder **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** inside the `application_user` folder.
+The content should be something like this:
+```bash
+user@yourpc:flipperzero-firmware-wPlugins/applications_user$ tree 
+.
+├── my_first_app
+│   ├── application.fam
+│   └── my_first_app.c
+└── README.md
 
-**TO CONTINUE**
+1 directory, 3 files
+user@yourpc:flipperzero-firmware-wPlugins/applications_user$ 
+```
+Now return to the root of Flip.x0 firmware with a `cd ..` command and prepare yourself for the compilation phase. On the terminal type:
+
+    ./fbt fap_my_first_app
+  and wait for the magic.
+  When you create a FAP and you want to compile that application, you need to run the compiler with a prefix before the name of your app: in this case, the name of the FAP is **my_first_app* (that is also the name of the folder...) the word `fap_` before the name identifies and tells to the SCons to compile THAT application.
+  Every kind of application must be compiled with a `fap_` as prefix before its name.
+  
+> A small example.
+> Suppose to have an amazing FAP to compile and its name is **awesome_program** (as the name of the folder in which it is contained) the command for the compilation will be the following:
+
+    ./fbt fap_awesome_program
+
+But, now let's go back to the previous stage and see what happened to the FAP compilation.
+
+    2022-12-24 16:44:41,216 [INFO] Packing
+    	LINK	build/f7-firmware-C/.extapps/my_first_app_d.elf
+    2022-12-24 16:44:41,291 [INFO] Complete
+    2022-12-24 16:44:41,305 [INFO] Complete
+    	PBVER	build/f7-firmware-C/assets/compiled/protobuf_version.h
+    	PREGEN	build/f7-firmware-C/sdk_origin.i
+    	SDKSRC	build/f7-firmware-C/sdk_origin.i
+    	SDKCHK	firmware/targets/f7/api_symbols.csv
+    API version 11.3 is up to date
+    	APPMETA	build/f7-firmware-C/.extapps/my_first_app.fap
+    	FAP	build/f7-firmware-C/.extapps/my_first_app.fap
+    	APPCHK	build/f7-firmware-C/.extapps/my_first_app.fap
+    	
+Close to the end of our compilation output, we can clearly notice that we successfully created our FAP binary: your first FAP is waiting for you in this folder !
+
+    build/f7-firmware-C/.extapps/my_first_app.fap
+
+At this point we can deploy our application in two different ways: let's see how we can proceed.
+
+## Deploy FAP inside your Flip.x0
+For deploy our FAP into our Flip.x0, we can proceed in two ways:
+ 1. Launch the application using the `./fbt` command
+ 2. Copy the compiled FAP inside our Flip.x0 
+
+**1) Using the Flipper Build Tool**
+Connect your Flip.x0 to your computer using the USB-Type C cable (the device will be powered on automatically).
+Make sure that the serial device associated to your Flip.x0 is not used by any program. 
+**Close any instance** of qFlipper application or other kind of software that can perform some serial communication with your Flip.x0 like minicom or miniterm.
+When you're ready, on the terminal type the following command:
+
+    ./fbt launch_app APPSRC=my_first_app
+    
+After some time the Flipper Build Tool will call a script called `runfap.py` and as if by magic your first FAP will appear on your Flip.x0 !
+ ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/my_first_app.png?raw=true)
+  
 
