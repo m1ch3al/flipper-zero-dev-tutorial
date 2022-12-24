@@ -38,6 +38,8 @@ Within **application.fam** it's possible to find all the information regarding t
 When you turned on your Flip.x0, probably you saw a many FAP in the various menu of the system.
 Every FAP has a name and an icon: that's means you can personalize your app as you want.
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png?raw=true)
+
+
 Just for convenience, in this tutorial, I will use the name **icon.png** for the small FAP icons we'll created together, but feel free to change the name of the file and obliviously inside the application.fam (we will also see this later).
 Remember that the declaration of an icon for a FAP, is not necessary: when you'll compile your application, the icon will be not showed in the list and you will see only the name with a blank space on the left.  
 
@@ -88,7 +90,10 @@ My suggestion is to choose a name that could be understand easily.
 
 ## name
  This field represents the string that will be displayed on your Flip.x0 when you'll use the browser, as shown in the image below.
+ 
+ 
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/fam_name.png?raw=true)
+
 
 ## apptype
 This directive specified which kind of FAP you want to create.
@@ -285,6 +290,7 @@ When you're ready, on the terminal type the following command:
     ./fbt launch_app APPSRC=my_first_app
     
 After some time the Flipper Build Tool will call a script called `runfap.py` and as if by magic your first FAP will appear on your Flip.x0 !
+
  ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/my_first_app.png?raw=true)
   
 
