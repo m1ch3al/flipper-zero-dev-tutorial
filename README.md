@@ -293,10 +293,9 @@ When you're ready, on the terminal type the following command:
 After some time the Flipper Build Tool will call a script called `runfap.py` and as if by magic your first FAP will appear on your Flip.x0 !
 
  ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/my_first_app.png?raw=true)
+ 
  You can exit from the application by pressing the back button.
-   
- <video controls="" width="800" height="500" muted="" loop="" autoplay="">
-<source src="https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/my_first_app.mp4" type="video/mp4">
-</video> 
+  ![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/first_app.gif?raw=true)
+
   
 **2) Copy the .fap file inside your Flip.x0 and run the application manually**
