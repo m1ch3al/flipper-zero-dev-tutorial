@@ -282,6 +282,7 @@ For deploy our FAP into our Flip.x0, we can proceed in two ways:
  2. Copy the compiled FAP inside our Flip.x0 
 
 **1) Using the Flipper Build Tool**
+
 Connect your Flip.x0 to your computer using the USB-Type C cable (the device will be powered on automatically).
 Make sure that the serial device associated to your Flip.x0 is not used by any program. 
 **Close any instance** of qFlipper application or other kind of software that can perform some serial communication with your Flip.x0 like minicom or miniterm.
