@@ -1,12 +1,16 @@
+
 ## Flipper Zero dev tutorial with examples.
 A fun journey to discover Flipper Zero and how FAP (Flipper-zero APplication) are developed.
 ![title](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/title.png?raw=true)
 > VERY IMPORTANT:
 > Most likely I will write some bullshit: feel free to clone my repository, try, change and why not, improve my code.
 
-FlipperZero uses a particular structure for build its application called **SCons** (more information can be found here: https://scons.org)
+> ## As a developer I am used to working with Linux and this tutorial was written using ubuntu 20.04.5 LTS. I do not tried on Microsoft Windows.
+
+FlipperZero uses a particular structure for build its application called **SCons** (more information can be found here: https://scons.org): this ambitious project is a substitute of the classic Make and the configurations files are Python scripts for use the power of a real programming language to solve build problems. 
 
 >   NOTE: for those whom is interested learning more about SCons, I advise to NOT continue. This tutorial helps you how to create applications for your FlipperZero, not about compilation and/or internal FreeRTOS information.
+
 
 # Simple FAP structure.
 A FAP (Flipperzero APplication) has a particular filesystem structure like this:
@@ -25,23 +29,23 @@ A FAP (Flipperzero APplication) has a particular filesystem structure like this:
 Let's analyze all the part of the FAP:
 
 ## application.fam
-This one of the most important file if you want to create a FAP.
+This one of the most important file, if you want to create a FAP.
 For example, if you are familiar with Java/Kotlin (especially for Android OS) probably you'll remember *AndroidManifest.xml*: the concept is the same.
 If you don't what is a manifest, don't worry: this is a simple text (ascii) file with a list of "declarations" required to run the FAP correctly.
 Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be will be analyzed individually, allowing you to implement the functionality of all the statements.
 
 ## icon.png
-When you powered on your Flip.x0, probably you saw a many FAP in the various menu of the system.
-Every FAP has a name and an icon: that's meaning you can personalize  your app as you want.
+When you turned on your Flip.x0, probably you saw a many FAP in the various menu of the system.
+Every FAP has a name and an icon: that's means you can personalize your app as you want.
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png?raw=true)
 Just for convenience, in this tutorial, I will use the name **icon.png** for the small FAP icons we'll created together, but feel free to change the name of the file and obliviously inside the application.fam (we will also see this later).
 Remember that the declaration of an icon for a FAP, is not necessary: when you'll compile your application, the icon will be not showed in the list and you will see only the name with a blank space on the left.  
 
 ## README (.md)
-I don't want to dwell too much on this part: everybody knows (probably if you develop software) the importance of a README file especially if you want to distribute your FAP using the most common channels like GitHub or other kind of online repository management system.
+I don't want to dwell too much on this part: everybody knows (probably if you're a developer) the importance of a README file especially if you want to distribute your FAP using the most common channels like GitHub or other site like it.
 
 ## images (folder)
-if you FAP need to display some images, that it's a good reason for keep all the resources organized inside a folder. In the same way, feel free to change the name of this folder as you prefer, but remember to change the name in the application.fam.
+if your FAP need to display some images, that it's a good reason for keep all the resources organized inside a folder. In the same way, feel free to change the name of this folder as you prefer, but remember to change the name in the application.fam.
 
  ## main.c
  Somewhere, the main function will be defined, right?
@@ -73,8 +77,8 @@ The content of the application.fam is the following:
 	        fap_category="Examples",
 	        
 	        # Added for explanation
-	        fap_icon_assets="images",
 	        fap_icon="icon.png",
+	        fap_icon_assets="images",
 	    )    
 Let's analyze now all the declaration of the fam.
 ## appid
@@ -98,11 +102,107 @@ At the moment, the documentation is very poor and I only found four types of **a
  The plugins are compiled into the kernel and will be flashed as part of the firmware in the main SoC, furthermore writing plugins require the developer to edit/maintain `/applications/meta/applications.fam`
  
   **EXTERNAL** is used (as in this case) for delopy FAP 
- The compiled FAP are separate programs and you can store the build verion inside the microSD.
+ The compiled FAP are separated programs and you can store the build version (.fap file) inside your Flip.x0 microSD.
 
 **SETTINGS**
-to continue...
+I'm not an expert but I can suppose that if you want to develop FAP using Settings app-type, probably you want to have integration with the FreeRTOS inside your Flip.x0 
 
 ** METAPACKAGE **
-to continue...
+Sincerely I don't understand well what represents this kind of option: when the documentation will be availabe, I'll satisfy my curiosity.
 
+## entry_point
+Is the main function of your FAP. Like in C with the **main** function, here you can have a different naming option, but the concept is the same.
+In this example I have this portion of code:
+
+    int32_t my_first_app_main(void* p) {
+        UNUSED(p);
+    }
+As you can see above,  this kind of function is equivalent to this one:
+
+    int main(int argc,  char  *argv[])  {
+        // Do something here...
+        return 0;  
+    }
+when you write in pure C (for Unix/Linux like).
+
+## stack_size
+I don't think there is much need to explain this statement: you can specify the size of the stack inside your FAP :P
+
+## fap_icon
+Use this declaration if you want to give to your FAP a bit of elegance.
+In this case, we have an "icon.png" as a FAP icon.
+The important information you need to know are:
+ - the size of the icon: 10 pixel x 10 pixel 
+ - the colors palette: only white (for the background) and black are allowed
+
+## fap_icon_assets
+This directive specify a folder name and basically, tells to your Flip.x0 where load the images to draw into the GUI.
+If you use this declaration, make sure to have the folder created before compiling the FAB, otherwise the compilation phase will fail.
+
+# How to build a FAP.
+Let's use as example the first application in this tutorial.
+First of all, open a terminal ad move yourself into your favorite folder for the development.
+Use git to clone the official repository of Flip.x0 firmware or use a custom firmware like RogueMaster, as I did. 
+If you want to use the official firmware repository you need launch this command: 
+
+    git clone https://github.com/flipperdevices/flipperzero-firmware.git
+
+Otherwise (like me) this is the RogueMaster firmware:
+
+    git clone https://github.com/RogueMaster/flipperzero-firmware-wPlugins.git
+
+once the repository is cloned, enter inside the firmware folder and explore what is inside:
+
+    drwxrwxr-x 19 user user    4096 dic 22 13:35 .
+    drwxrwxr-x 14 user user    4096 dic 23 12:49 ..
+    drwxrwxr-x  9 user user    4096 dic 18 14:09 applications
+    drwxrwxr-x  5 user user    4096 dic 21 21:09 applications_user
+    drwxrwxr-x  8 user user    4096 dic 18 14:09 assets
+    drwxrwxr-x  2 user user    4096 dic 18 14:09 brew-cask
+    -rw-rw-r--  1 user user     134 dic 18 14:09 Brewfile
+    drwxrwxr-x  4 user user    4096 dic 21 21:56 build
+    -rwxrwxr-x  1 user user     643 dic 20 09:48 buildRelease.sh
+    -rw-rw-r--  1 user user    3419 dic 20 09:48 CHANGELOG.md
+    -rw-rw-r--  1 user user    5358 dic 18 14:09 .clang-format
+    -rw-rw-r--  1 user user    5226 dic 18 14:09 CODE_OF_CONDUCT.md
+    -rw-rw-r--  1 user user    2874 dic 18 14:09 CODING_STYLE.md
+    -rwxrwxr-x  1 user user      92 dic 21 21:55 compile.sh
+    -rw-rw-r--  1 user user    4764 dic 18 14:09 CONTRIBUTING.md
+    drwxrwxr-x  4 user user    4096 dic 18 14:09 debug
+    drwxrwxr-x  3 user user    4096 dic 21 21:56 dist
+    drwxrwxr-x  3 user user    4096 dic 20 09:48 documentation
+    -rw-rw-r--  1 user user    9486 dic 18 14:09 .drone.yml
+    -rw-rw-r--  1 user user     173 dic 18 14:09 .editorconfig
+    -rwxrwxr-x  1 user user     727 dic 18 14:09 fbt
+    -rw-rw-r--  1 user user     388 dic 18 14:09 fbt.cmd
+    -rw-rw-r--  1 user user    2271 dic 18 14:09 fbt_options.py
+    drwxrwxr-x  3 user user    4096 dic 18 14:09 firmware
+    -rw-rw-r--  1 user user    8047 dic 18 14:09 firmware.scons
+    drwxrwxr-x  3 user user    4096 dic 18 14:09 furi
+    -rw-rw-r--  1 user user     605 dic 18 14:09 GAMES_ONLY.md
+    drwxrwxr-x  9 user user    4096 dic 22 13:35 .git
+    -rw-rw-r--  1 user user      64 dic 18 14:09 .gitattributes
+    drwxrwxr-x  3 user user    4096 dic 18 14:09 .github
+    -rw-rw-r--  1 user user     624 dic 22 13:35 .gitignore
+    -rw-rw-r--  1 user user    1198 dic 18 14:09 .gitmodules
+    drwxrwxr-x 34 user user    4096 dic 18 14:09 lib
+    -rw-rw-r--  1 user user   35149 dic 18 14:09 LICENSE
+    -rw-rw-r--  1 user user    3393 dic 18 14:09 MACOS_GUIDE.md
+    -rw-rw-r--  1 user user    1259 dic 18 14:09 Makefile
+    -rw-rw-r--  1 user user   54919 dic 20 09:48 patreon.png
+    -rw-rw-r--  1 user user     575 dic 18 14:09 .pvsconfig
+    -rw-rw-r--  1 user user     279 dic 18 14:09 .pvsoptions
+    -rw-rw-r--  1 user user   31567 dic 22 13:35 ReadMe.md
+    -rw-rw-r--  1 user user    3986 dic 18 14:09 RoadMap.md
+    -rw-rw-r--  1 user user 9881732 dic 22 09:50 .sconsign.dblite
+    -rw-rw-r--  1 user user    8326 dic 18 14:09 SConstruct
+    drwxrwxr-x  9 user user    4096 dic 18 14:55 scripts
+    drwxrwxr-x  3 user user    4096 dic 18 14:09 site_scons
+    -rw-rw-r--  1 user user    1080 dic 20 09:48 SUPPORT.md
+    -rw-rw-r--  1 user user   10760 dic 18 14:09 test_iso7816_helpers.c
+    -rw-rw-r--  1 user user   20665 dic 18 14:09 test_mrtd_helpers.c
+    drwxrwxr-x  3 user user    4096 dic 18 14:11 toolchain
+    drwxrwxr-x  3 user user    4096 dic 18 14:13 .vscode
+
+it will be possible to notice an executable file inside the firmware folder called **fbt**: that will be the core of our entertainment.
+For more information about **fbt** please use the following link: [https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md](https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/fbt.md)
