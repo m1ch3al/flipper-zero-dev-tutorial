@@ -1,4 +1,5 @@
 
+
 ## Flipper Zero dev tutorial with examples.
 A fun journey to discover Flipper Zero and how FAP (Flipper-zero APplication) are developed.
 ![title](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/title.png?raw=true)
@@ -305,3 +306,8 @@ Locate your .fap binary reading the output of the compilation phase, in my case 
 
 Launch the qFlipper application, select the file-manager and drag 'n' drop the file into the folder `Examples` (just for keep all the stuff organized) like in the image below.
 ![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/copy_fap.png?raw=true)
+
+  
+Once you complete the drag n' drop operation, you can find your FAP in the list of applications and it will be accessible by pressing the center button (OK) and navigate through Applications &rarr; Examples &rarr; My First App
+
+![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/explore_first_app.gif?raw=true)
