@@ -311,3 +311,18 @@ Launch the qFlipper application, select the file-manager and drag 'n' drop the f
 Once you complete the drag n' drop operation, you can find your FAP in the list of applications and it will be accessible by pressing the center button (OK) and navigate through Applications &rarr; Examples &rarr; My First App
 
 ![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/explore_first_app.gif?raw=true)
+
+## And now, what can I do?
+Learning, for sure :) 
+Now you know how to compile and deploy FAP inside your Flip.x0: all you have to do is learn to develop with the examples that I will add into this repository.
+
+> The code will be strong commented to allow you to better understand all the API calls to FreeRTOS and Furi
+
+|N.|Example name|Small description|
+|--|--|--|
+|01|My First App|The simplest possible FAP using GUI|
+|02|Keypad and GUI timer|A simple FAP showing how to interact wit the Flip.x0 buttons and timer|
+|03|Notification|A simple FAP using notification (blinking LED and vibration)|
+|04| TO DO | |
+
+ 
