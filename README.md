@@ -318,6 +318,9 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 
 > The code will be strong commented to allow you to better understand all the API calls to FreeRTOS and Furi
 
+### And here, a small gift for you: https://ilin.pt/stuff/fui-editor/
+**It's a web-base application for build Flip.x0 GUI very easily.**
+
 |N.|Example name|Small description|
 |--|--|--|
 |01|My First App|The simplest possible FAP using GUI|
