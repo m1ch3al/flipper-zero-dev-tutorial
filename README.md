@@ -325,7 +325,7 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 |--|--|--|
 |01|My First App|The simplest possible FAP using GUI|
 |02|Keypad and GUI timer|A simple FAP showing how to interact wit the Flip.x0 buttons and timer|
-|03|Notification|A simple FAP using notification (blinking LED and vibration)|
+|03|Notifications|A simple FAP using notification (blinking LED and vibration)|
 |04| TO DO | |
 
  
