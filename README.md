@@ -321,12 +321,13 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 ### And here, a small gift for you: https://ilin.pt/stuff/fui-editor/
 **It's a web-base application for build Flip.x0 GUI very easily.**
 
+# Index of code examples
 |N.|Example name|Small description|
 |--|--|--|
-|01|My First App|The simplest possible FAP, using GUI|
-|02|Keypad and GUI timer|This FAP showing how to interact wit the Flip.x0 buttons and timer|
-|03|Notification|Learn how to use the notification system|
-|04| More notifications | Let's see how to generate sounds, using the integrated LED and Vibration |
-|05|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
+|0x01|My First App|The simplest possible FAP, using GUI|
+|0x02|Keypad and GUI timer|This FAP showing how to interact wit the Flip.x0 buttons and timer|
+|0x03|Notification|Learn how to use the notification system|
+|0x04| More notifications | Let's see how to generate sounds, using the integrated LED and Vibration |
+|0x05|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
 
  
