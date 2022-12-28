@@ -30,10 +30,10 @@ A FAP (Flipperzero APplication) has a particular filesystem structure like this:
 Let's analyze all the part of the FAP:
 
 ## application.fam
-This one of the most important file, if you want to create a FAP.
+If you want to create a FAP, this kind of file is **mandatory**.
 For example, if you are familiar with Java/Kotlin (especially for Android OS) probably you'll remember *AndroidManifest.xml*: the concept is the same.
 If you don't what is a manifest, don't worry: this is a simple text (ascii) file with a list of "declarations" required to run the FAP correctly.
-Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be will be analyzed individually, allowing you to implement the functionality of all the statements.
+Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be analyzed individually, allowing you to implement the functionality of all the statements.
 
 ## icon.png
 When you turned on your Flip.x0, probably you saw a many FAP in the various menu of the system.
@@ -114,7 +114,7 @@ At the moment, the documentation is very poor and I only found four types of **a
 I'm not an expert but I can suppose that if you want to develop FAP using Settings app-type, probably you want to have integration with the FreeRTOS inside your Flip.x0 
 
 ** METAPACKAGE **
-Sincerely I don't understand well what represents this kind of option: when the documentation will be availabe, I'll satisfy my curiosity.
+Sincerely I don't understand well what represents this kind of option: when the documentation will be available, I'll satisfy my curiosity.
 
 ## entry_point
 Is the main function of your FAP. Like in C with the **main** function, here you can have a different naming option, but the concept is the same.
@@ -323,9 +323,10 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 
 |N.|Example name|Small description|
 |--|--|--|
-|01|My First App|The simplest possible FAP using GUI|
-|02|Keypad and GUI timer|A simple FAP showing how to interact wit the Flip.x0 buttons and timer|
-|03|Notifications|A simple FAP using notification (blinking LED and vibration)|
-|04| TO DO | |
+|01|My First App|The simplest possible FAP, using GUI|
+|02|Keypad and GUI timer|This FAP showing how to interact wit the Flip.x0 buttons and timer|
+|03|Notification|Learn how to use the notification system|
+|04| More notifications | Let's see how to generate sounds, using the integrated LED and Vibration |
+|05|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
 
  
