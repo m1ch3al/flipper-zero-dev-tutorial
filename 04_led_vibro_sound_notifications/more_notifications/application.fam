@@ -8,6 +8,6 @@ App(
   # Where the application will be stored into the Flip.x0
   fap_category="External",
   # This is needed if I have some images
-  fap_icon_assets="images",
+  #fap_icon_assets="images",
   fap_icon="icon.png",
 )
