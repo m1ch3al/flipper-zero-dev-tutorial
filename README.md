@@ -38,6 +38,7 @@ Within **application.fam** it's possible to find all the information regarding t
 ## icon.png
 When you turned on your Flip.x0, probably you saw a many FAP in the various menu of the system.
 Every FAP has a name and an icon: that's means you can personalize your app as you want.
+
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png?raw=true)
 
 
@@ -115,6 +116,14 @@ I'm not an expert but I can suppose that if you want to develop FAP using Settin
 
 ** METAPACKAGE **
 Sincerely I don't understand well what represents this kind of option: when the documentation will be available, I'll satisfy my curiosity.
+
+> FOUND Something new !!
+> METAPACKAGE : Does not define any code to be run, used for declaring dependencies and application bundles.
+
+
+All appplication type can be found here: 
+https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/AppManifests.md#application-definition
+
 
 ## entry_point
 Is the main function of your FAP. Like in C with the **main** function, here you can have a different naming option, but the concept is the same.
