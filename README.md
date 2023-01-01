@@ -114,7 +114,7 @@ At the moment, the documentation is very poor and I only found four types of **a
 **SETTINGS**
 I'm not an expert but I can suppose that if you want to develop FAP using Settings app-type, probably you want to have integration with the FreeRTOS inside your Flip.x0 
 
-** METAPACKAGE **
+**METAPACKAGE**
 Sincerely I don't understand well what represents this kind of option: when the documentation will be available, I'll satisfy my curiosity.
 
 > FOUND Something new !!
