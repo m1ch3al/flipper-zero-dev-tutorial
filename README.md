@@ -339,7 +339,7 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 |0x04| More notifications | Let's see how to generate sounds, using the integrated LED and Vibration |
 |0x05|File I/O| Basic filesystem operations (create, read, write, rename and delete) a file on microSD|
 |0x06|Logging | Learn how to integrate the serial logging through FlipperCLI|
-|0x07|Threading (code in preparation)| Simple usage of the FuriThread and how to implements them|
+|0x07|Threading | Simple usage of the FuriThread and how to implements them|
 |0x08|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
 
  
