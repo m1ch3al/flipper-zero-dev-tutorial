@@ -340,6 +340,8 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 |0x05|File I/O| Basic filesystem operations (create, read, write, rename and delete) a file on microSD|
 |0x06|Logging | Learn how to integrate the serial logging through FlipperCLI|
 |0x07|Threading | Simple usage of the FuriThread and how to implements them|
-|0x08|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
+|0x08|Advanced GUI (pt.1) (code in preparation)| Learn how to use advanced GUI component like dialogs, view, view_dispatcher, etc... |
+|0x09|Advanced GUI (pt.2) (code in preparation)| Learn how to use advanced GUI component like dialogs, view, view_dispatcher, etc... |
+|0x10|UART (code in preparation)| Basic use of the GPIO with the UART system (Serial interface)|
 
  
