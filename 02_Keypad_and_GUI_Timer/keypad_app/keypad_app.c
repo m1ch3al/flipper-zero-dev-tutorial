@@ -17,8 +17,7 @@
 #include <notification/notification_messages.h>
 
 // (*1) This will be the label that tells you which keypad-button is pressed.
-char* currentKeyPressed;
-int BUFFER = 10;
+char* currentKeyPressed = "NONE";
 
 static void draw_callback(Canvas* canvas, void* ctx) {
     UNUSED(ctx);
@@ -52,9 +51,6 @@ static void input_callback(InputEvent* input_event, void* ctx) {
 
 int32_t main_fap(void* p) {
     UNUSED(p);
-    // Initialization of (*1)
-    currentKeyPressed = (char*)malloc(sizeof(char) * BUFFER);
-    currentKeyPressed = "NONE";
 
     InputEvent event;
     FuriMessageQueue* event_queue = furi_message_queue_alloc(8, sizeof(InputEvent));
