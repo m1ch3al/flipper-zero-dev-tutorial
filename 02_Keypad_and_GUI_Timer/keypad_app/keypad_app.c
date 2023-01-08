@@ -53,7 +53,7 @@ static void input_callback(InputEvent* input_event, void* ctx) {
 int32_t main_fap(void* p) {
     UNUSED(p);
     // Initialization of (*1)
-    currentKeyPressed = (char*)malloc(sizeof(char) * BUFFER);
+    // corrected by an meitwouldseem, thank you man !
     currentKeyPressed = "NONE";
 
     InputEvent event;
