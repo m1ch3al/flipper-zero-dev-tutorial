@@ -1,1 +1,1 @@
-# Need finish to write comment in the code
+# Need finish to write comments in the code
