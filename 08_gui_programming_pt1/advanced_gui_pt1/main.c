@@ -1,17 +1,6 @@
 /*****************************************************************
  * Flip.x0 Tutorial
  *                                                     by M1ch3al
- * 0x08 - Advanced GUI example
- * 
- * An example using advanced GUI components, like menus, 
- * dialogs, button and more.   
- * 
- *****************************************************************
- */
-
-/*****************************************************************
- * Flip.x0 Tutorial
- *                                                     by M1ch3al
  * 0x08 - Advanced GUI (pt.1) 
  * 
  * An example using multiple view and exit dialog menu  
