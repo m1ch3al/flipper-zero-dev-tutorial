@@ -1,20 +1,20 @@
 
 
 ## Flipper Zero dev tutorial with examples.
-A fun journey to discover Flipper Zero and how FAP (Flipper-zero APplication) are developed.
+A fun journey to discover Flipper Zero and how a FAP (Flipper-zero APplication) is developed.
 ![title](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/title.png?raw=true)
 > VERY IMPORTANT:
 > Most likely I will write some bullshit: feel free to clone my repository, try, change and why not, improve my code.
 
-> ## As a developer I am used to working with Linux and this tutorial was written using ubuntu 20.04.5 LTS. I do not tried on Microsoft Windows.
+> ## As a developer I am used to working with Linux, and this tutorial was written using ubuntu 20.04.5 LTS. I have not tried this on Microsoft Windows.
 
-FlipperZero uses a particular structure for build its application called **SCons** (more information can be found here: https://scons.org): this ambitious project is a substitute of the classic Make and the configurations files are Python scripts for use the power of a real programming language to solve build problems. 
+FlipperZero uses a particular structure to build its application called **SCons** (more information can be found here: https://scons.org): this ambitious project is a substitute of the classic MAKE, and the configurations files are Python scripts that use the power of a real programming language to solve build problems. 
 
->   NOTE: for those whom is interested learning more about SCons, I advise to NOT continue. This tutorial helps you how to create applications for your FlipperZero, not about compilation and/or internal FreeRTOS information.
+>   NOTE: for those that are interested learning more about SCons, I advise you to NOT continue. This tutorial helps you create applications for your FlipperZero, but does not provide you with information about compilation and/or internal FreeRTOS.
 
 
 # Simple FAP structure.
-A FAP (Flipperzero APplication) has a particular filesystem structure like this:
+A The Flipperzero APplication FAP has a particular filesystem structure like this:
 
     [FAP-name]
         ├── application.fam (type: text file, compulsory)
@@ -27,49 +27,51 @@ A FAP (Flipperzero APplication) has a particular filesystem structure like this:
         ├── main.c (type: text file, optional)
         └── {others .c/.h files used by the FAP}
 
-Let's analyze all the part of the FAP:
+Let's analyze the parts of a FAP:
 
 ## application.fam
-If you want to create a FAP, this kind of file is **mandatory**.
-For example, if you are familiar with Java/Kotlin (especially for Android OS) probably you'll remember *AndroidManifest.xml*: the concept is the same.
-If you don't what is a manifest, don't worry: this is a simple text (ascii) file with a list of "declarations" required to run the FAP correctly.
-Within **application.fam** it's possible to find all the information regarding the behavior of the FAP: you can specify the resources that the FAP will use (like images), which kind of application will be (a plugin or external), the entry point of the FAP, the **appid**, the category and so on. Most of them will be analyzed individually, allowing you to implement the functionality of all the statements.
+If you want to create a FAP, this file is **mandatory**.
+For example, if you are familiar with Java/Kotlin (especially for Android OS) you will probably remember *AndroidManifest.xml*. The concept is the same.
+If you do not know what a manifest is, don't worry: this is a simple text (ascii) file with a list of "declarations" required to run the FAP correctly.
+Within **application.fam**, you will find all the information regarding the behavior of the FAP. You can specify the resources that the FAP will use (like images), which kind of application it will be (a plugin or external), the entry point of the FAP (the **appid**), the category, and so on. Most of them will be analyzed individually, allowing you to implement the functionality of all of the statements.
 
 ## icon.png
-When you turned on your Flip.x0, probably you saw a many FAP in the various menu of the system.
-Every FAP has a name and an icon: that's means you can personalize your app as you want.
+When you turn your Flip.x0 on, you see many FAP in the various menus you navigate.
+Every FAP has a name and an icon, that means you can personalize your apps as you want.
 
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/flipper_icons.png?raw=true)
 
 
-Just for convenience, in this tutorial, I will use the name **icon.png** for the small FAP icons we'll created together, but feel free to change the name of the file and obliviously inside the application.fam (we will also see this later).
-Remember that the declaration of an icon for a FAP, is not necessary: when you'll compile your application, the icon will be not showed in the list and you will see only the name with a blank space on the left.  
+For convenience, in this tutorial I will use the name **icon.png** for the small FAP icons we will create together. But feel free to change the name of the file and its declaration inside the application.fam (we will see this later).
+Remember that the declaration of an icon for a FAP is not necessary. When you compile your application, the icon will be not shown in the list and you will only see the name with a blank space on the left.  
 
 ## README (.md)
-I don't want to dwell too much on this part: everybody knows (probably if you're a developer) the importance of a README file especially if you want to distribute your FAP using the most common channels like GitHub or other site like it.
+I don't want to dwell too much on this part. Everyone knows (if you're a developer) the importance of a README file, Especially if you want to distribute your FAP using the most common channels like GitHub or something like it.
 
 ## images (folder)
-if your FAP need to display some images, that it's a good reason for keep all the resources organized inside a folder. In the same way, feel free to change the name of this folder as you prefer, but remember to change the name in the application.fam.
+if your FAP needs to display some images, it's a good reason for keep all the resources organized inside a folder. In the same way, feel free to change the name of this folder as you prefer, but remember; change the name in the application.fam.
 
- ## main.c
- Somewhere, the main function will be defined, right?
- During the compilation phase, the SCons system will check the content of all the .c files inside your FAP folder and it will recognize the name of the main function (declared inside the application.fam).
-So...it's better to keep the code organized: it doesn't matter the names of the .c files inside you FAP application: the important thing (for your convenience) is to have a .c file with an easily recognizable name that allow you to understand where is the main entry of the application.
-If you know the C language, probably you well understood who am I referring to:
+## main.c
+Somewhere the main function will be defined, right?
+During the compilation phase, the SCons system will check the contents of all .c files inside your FAP folder and it will recognize the name of the main function (declared inside the application.fam).
+So...it's better to keep the code organized. It doesn't matter what the names of the .c files inside you FAP application are. The important thing, for your convenience, is to have a .c file with an easily recognizable name. One that allow you to understand where the main entry of your application is.
+If you know the C language, you probably well understand what am I referring to:
 
     int main(int argc,  char  *argv[])  {
         // Do something here...
         return 0;  
     }
-For the Flipper Zero Application, we need the same thing.
-Keep calm: we will see later in details.
+For a Flipper Zero Application, we need the same thing.
+Keep calm, we will return to it later in detail.
 
 # Content of application.fam
-This is an example of how the manifest of your Flip.x0 application is made.  
-Let's take for example **my_first_app** (inside *01_my_very_first_fap/my_first_app/* folder of this repository)
-You will find only two files: 
-- my_first_app.c
-- application.fam
+This is an example of the contents of the manifest for your Flip.x0 application.  
+Let's use **my_first_app** as an example (inside the  *01_my_very_first_fap/my_first_app/* folder of this repository)
+
+You will only find two files: 
+	- my_first_app.c
+	- application.fam
+
 The content of the application.fam is the following:
 
         App(
@@ -84,41 +86,43 @@ The content of the application.fam is the following:
 	        fap_icon="icon.png",
 	        fap_icon_assets="images",
 	    )    
+
 Let's analyze now all the declaration of the fam.
+
 ## appid
-This instruction helps your Flip.x0 the identify your FAP inside all the ecosystem.
-The **appid** has to be unique, otherwise during compilation phase, the compiler **(fbt)** will throw an error.
-My suggestion is to choose a name that could be understand easily.
+This instruction helps your Flip.x0 identify your FAP inside its ecosystem.
+The **appid** has to be unique. Otherwise, the compiler **(fbt)** will throw an error.
+My suggestion is to choose a name that can be understood easily.
 
 ## name
- This field represents the string that will be displayed on your Flip.x0 when you'll use the browser, as shown in the image below.
+ This field represents the string that will be displayed on your Flip.x0 when you use the browser, as shown below.
  
  
 ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/fam_name.png?raw=true)
 
 
 ## apptype
-This directive specified which kind of FAP you want to create.
-At the moment, the documentation is very poor and I only found four types of **apptype**:
+This directive specifies which kind of FAP you want to create.
+Currently, the documentation is very poor and I only found four types of **apptype**:
  - FlipperAppType.PLUGIN
  - FlipperAppType.EXTERNAL
  - FlipperAppType.SETTINGS
  - FlipperAppType.METAPACKAGE
  
-  **PLUGIN** is used if you want to create FAP as *plugin* to interact with of Flip.x0. 
- The plugins are compiled into the kernel and will be flashed as part of the firmware in the main SoC, furthermore writing plugins require the developer to edit/maintain `/applications/meta/applications.fam`
+  **PLUGIN** is used if you want to create a FAP to interact with of Flip.x0. 
+  The plugins are compiled into the kernel and will be flashed as part of the firmware on the main SoC. Furthermore, writing plugins requires the developer to edit/maintain `/applications/meta/applications.fam`
  
   **EXTERNAL** is used (as in this case) for delopy FAP 
- The compiled FAP are separated programs and you can store the build version (.fap file) inside your Flip.x0 microSD.
+  The compiled FAP are separated programs and you can store the build version (.fap file) inside your Flip.x0 microSD.
 
-**SETTINGS**
-I'm not an expert but I can suppose that if you want to develop FAP using Settings app-type, probably you want to have integration with the FreeRTOS inside your Flip.x0 
+  **SETTINGS**
+  I'm not an expert, but I suppose that if you want to develop a FAP using the  Settings app-type, you probably want to have integration with the FreeRTOS inside your Flip.x0 
 
-**METAPACKAGE**
-Sincerely I don't understand well what represents this kind of option: when the documentation will be available, I'll satisfy my curiosity.
+  **METAPACKAGE**
+  Unfortunately, I do not understand what this option represents. I will satisfy my curiosity when the the documentation becomes available. 
 
 > FOUND Something new !!
-> METAPACKAGE : Does not define any code to be run, used for declaring dependencies and application bundles.
+> METAPACKAGE : Does not define any code to be run, it is  used for declaring dependencies and application bundles.
 
 
 All appplication type can be found here: 
@@ -126,38 +130,37 @@ https://github.com/flipperdevices/flipperzero-firmware/blob/dev/documentation/Ap
 
 
 ## entry_point
-Is the main function of your FAP. Like in C with the **main** function, here you can have a different naming option, but the concept is the same.
-In this example I have this portion of code:
+Is the main function of your FAP, like C with the **main** function. Here you have different naming options, but the concept is the same.
+As an example,I have a portion of code:
 
     int32_t my_first_app_main(void* p) {
         UNUSED(p);
     }
-As you can see above,  this kind of function is equivalent to this one:
+As you can see above, this kind of function is equivalent to this one when you write in pure C (forUnix/Linux).
 
     int main(int argc,  char  *argv[])  {
         // Do something here...
         return 0;  
     }
-when you write in pure C (for Unix/Linux like).
 
 ## stack_size
-I don't think there is much need to explain this statement: you can specify the size of the stack inside your FAP :P
+I don't think there is much need to explain this statement. You can specify the size of the stack inside your FAP :P
 
 ## fap_icon
 Use this declaration if you want to give to your FAP a bit of elegance.
 In this case, we have an "icon.png" as a FAP icon.
 The important information you need to know are:
  - the size of the icon: 10 pixel x 10 pixel 
- - the colors palette: only white (for the background) and black are allowed
+ - the colors palette: only white and black are allowed
 
 ## fap_icon_assets
-This directive specify a folder name and basically, tells to your Flip.x0 where load the images to draw into the GUI.
-If you use this declaration, make sure to have the folder created before compiling the FAB, otherwise the compilation phase will fail.
+This directive specifies a folder name and basically tells your Flip.x0 where to load the images to draw into the GUI.
+If you use this declaration, make sure to have the folder created before compiling the FAB. Otherwise the compilation phase will fail.
 
 # How to build a FAP.
-Let's use as example the first application in this tutorial.
-First of all, open a terminal ad move yourself into your favorite folder for the development.
-Use git to clone the official repository of Flip.x0 firmware or use a custom firmware like RogueMaster, as I did. 
+Let's use the first application in this tutorial as an example.
+First, open a terminal and move yourself into your favorite folder for development.
+Use git to clone the official repository of Flip.x0 firmware. Or use a custom firmware like RogueMaster, as I did. 
 If you want to use the official firmware repository you need launch this command: 
 
     git clone https://github.com/flipperdevices/flipperzero-firmware.git
@@ -166,7 +169,7 @@ Otherwise (like me) this is the RogueMaster firmware:
 
     git clone https://github.com/RogueMaster/flipperzero-firmware-wPlugins.git
 
-once the repository is cloned, enter inside the firmware folder and explore what is inside:
+Once the repository is cloned, enter the firmware folder and explore what is inside:
 
     drwxrwxr-x 19 user user    4096 dic 22 13:35 .
     drwxrwxr-x 14 user user    4096 dic 23 12:49 ..
@@ -224,12 +227,12 @@ For more information about **fbt** please use the following link: [https://githu
 As you can read from the documentation, **fbt** stands for ***F**lipper **B**uild **T**ool* and it's the entry point for firmware-related commands and utilities. It is invoked by `./fbt` in the firmware project root directory. Internally, it is a wrapper around the [SCons](https://scons.org/) build system.
 
 ### Visual Studio Code integration (optional)
-Personally, for the development of the IoT firmware, I am very happy with Visual Studio Code, but you can use what you prefer.
+Personally, for the development of IoT firmware I am very happy with Visual Studio Code, but you can use what you prefer.
 `fbt`  includes basic development environment configuration for VSCode. 
-To deploy it, run  `./fbt vscode_dist` from the folder of the Flip.x0 firmware. 
-That will copy initial environment configuration to  `.vscode`  folder. After that, you can use that configuration by starting VSCode and choosing firmware root folder in "File > Open Folder" menu.
+To deploy it, run  `./fbt vscode_dist` from the Flip.x0 firmware folder. 
+That will copy the initial environment configuration to a  `.vscode`  folder. After that, you can use that configuration by starting VSCode and choosing the firmware root folder in "File > Open Folder" menu.
 
--   On first start, you'll be prompted to install recommended plug-ins. Please install them for best development experience.  _You can find a list of them in  `.vscode/extensions.json`._
+-   On first start, you'll be prompted to install recommended plug-ins. Install them for the  best development experience.  You can find a list of them in _`.vscode/extensions.json`._
 -   Basic build tasks are invoked in Ctrl+Shift+B menu.
 -   Debugging requires a supported probe. That includes:
     -   Wi-Fi devboard with stock firmware (blackmagic),
@@ -238,9 +241,10 @@ That will copy initial environment configuration to  `.vscode`  folder. After th
 -   Without a supported probe, you can install firmware on Flipper using USB installation method.
 
 ## Prepare the environment and compile our first FAP :)
-Finally it's time to fill out our first application: for this part of the tutorial, I will use **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** as a reference code.
-Navigate into the folder tree of the Flip.x0 firmware and enter inside `application_user` folder.
-Copy the folder **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** inside the `application_user` folder.
+Finally it's time to fill out our first application. For this part of the tutorial, I will use **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** as an example.
+Navigate into the folder tree of the Flip.x0 firmware and enter the `application_user` folder.
+Copy the folder **[my_first_app](https://github.com/m1ch3al/flipper-zero-dev-tutorial/tree/main/01_My_very_first_FAP/my_first_app)** into the `application_user` folder.
+
 The content should be something like this:
 ```bash
 user@yourpc:flipperzero-firmware-wPlugins/applications_user$ tree 
@@ -253,19 +257,22 @@ user@yourpc:flipperzero-firmware-wPlugins/applications_user$ tree
 1 directory, 3 files
 user@yourpc:flipperzero-firmware-wPlugins/applications_user$ 
 ```
-Now return to the root of Flip.x0 firmware with a `cd ..` command and prepare yourself for the compilation phase. On the terminal type:
+Now return to the root of Flip.x0 firmware with a `cd ..` command and prepare yourself for the compilation phase. 
+On the terminal type:
 
     ./fbt fap_my_first_app
-  and wait for the magic.
-  When you create a FAP and you want to compile that application, you need to run the compiler with a prefix before the name of your app: in this case, the name of the FAP is **my_first_app* (that is also the name of the folder...) the word `fap_` before the name identifies and tells to the SCons to compile THAT application.
+  
+and wait for the magic.
+  
+  When you create a FAP and  want to compile that application, you need to run the compiler with the './fbt' command before the name of your app. In this case, the name of the FAP is **my_first_app* (that is also the name of the folder...) the word `fap_` before the name tells SCons to compile THAT application.
   Every kind of application must be compiled with a `fap_` as prefix before its name.
   
 > A small example.
-> Suppose to have an amazing FAP to compile and its name is **awesome_program** (as the name of the folder in which it is contained) the command for the compilation will be the following:
+> Suppose you have an amazing FAP to compile and its name is **awesome_program** (as the name of the folder in which it is contained). The command for compilation will be the following:
 
     ./fbt fap_awesome_program
 
-But, now let's go back to the previous stage and see what happened to the FAP compilation.
+Now let's go back to the previous stage, and see what happened to the FAP compilation.
 
     2022-12-24 16:44:41,216 [INFO] Packing
     	LINK	build/f7-firmware-C/.extapps/my_first_app_d.elf
@@ -280,11 +287,11 @@ But, now let's go back to the previous stage and see what happened to the FAP co
     	FAP	build/f7-firmware-C/.extapps/my_first_app.fap
     	APPCHK	build/f7-firmware-C/.extapps/my_first_app.fap
     	
-Close to the end of our compilation output, we can clearly notice that we successfully created our FAP binary: your first FAP is waiting for you in this folder !
+Near the end of our compilation output, we can clearly see that we successfully created our FAP binary. Your first FAP is waiting for you in this folder!
 
     build/f7-firmware-C/.extapps/my_first_app.fap
 
-At this point we can deploy our application in two different ways: let's see how we can proceed.
+At this point we can deploy our application in two different ways. Let's see how we can proceed.
 
 ## Deploy FAP inside your Flip.x0
 For deploy our FAP into our Flip.x0, we can proceed in two ways:
@@ -295,12 +302,13 @@ For deploy our FAP into our Flip.x0, we can proceed in two ways:
 
 Connect your Flip.x0 to your computer using the USB-Type C cable (the device will be powered on automatically).
 Make sure that the serial device associated to your Flip.x0 is not used by any program. 
-**Close any instance** of qFlipper application or other kind of software that can perform some serial communication with your Flip.x0 like minicom or miniterm.
-When you're ready, on the terminal type the following command:
+**Close any instance** of the qFlipper application or any  other kind of software that can perform serial communication with your Flip.x0 like minicom or miniterm.
+
+When you're ready, type the following command:
 
     ./fbt launch_app APPSRC=my_first_app
     
-After some time the Flipper Build Tool will call a script called `runfap.py` and as if by magic your first FAP will appear on your Flip.x0 !
+After some time the Flipper Build Tool (fbt) will call the script `runfap.py` and as if by magic, your first FAP will appear on your Flip.x0!
 
  ![flipper_icons](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/my_first_app.png?raw=true)
  
@@ -309,11 +317,11 @@ After some time the Flipper Build Tool will call a script called `runfap.py` and
 
   
 **2) Copy the .fap file inside your Flip.x0 and run the application manually**
-Locate your .fap binary reading the output of the compilation phase, in my case the file was created into this folder and the full path is :
+Locate your .fap binary reading the output of the compilation phase. In my case the file was created into this folder, and the full path is:
 
     [your_working_folder]/flipperzero-firmware/build/f7-firmware-C/.extapps/my_first_app.fap
 
-Launch the qFlipper application, select the file-manager and drag 'n' drop the file into the folder `Examples` (just for keep all the stuff organized) like in the image below.
+Launch the qFlipper application, select the file-manager, then drag 'n' drop the file into the folder `Examples` (just for keep all the stuff organized) like in the image below.
 ![my_first_fap_in_action](https://github.com/m1ch3al/flipper-zero-dev-tutorial/blob/main/images/copy_fap.png?raw=true)
 
   
@@ -334,7 +342,7 @@ Now you know how to compile and deploy FAP inside your Flip.x0: all you have to 
 |N.|Example name|Small description|
 |--|--|--|
 |0x01|My First App|The simplest possible FAP, using GUI|
-|0x02|Keypad and GUI timer|This FAP showing how to interact wit the Flip.x0 buttons and timer|
+|0x02|Keypad and GUI timer|This FAP showing you how to interact with the Flip.x0 buttons and timer|
 |0x03|Notification|Learn how to use the notification system|
 |0x04| More notifications | Let's see how to generate sounds, using the integrated LED and Vibration |
 |0x05|File I/O| Basic filesystem operations (create, read, write, rename and delete) a file on microSD|
