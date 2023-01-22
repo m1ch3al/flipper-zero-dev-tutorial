@@ -17,6 +17,9 @@
 
 Car* sharedCar;
 
+// The funcion of this view is to to have two differents views 
+// that work all together.
+
 static void car_draw_callback(Canvas* canvas, void* context) {
     canvas_clear(canvas);
     canvas_set_font(canvas, FontSecondary);

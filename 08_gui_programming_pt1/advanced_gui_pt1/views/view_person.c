@@ -17,6 +17,7 @@
 
 Person* sharedPerson;
 
+// The drawing callback for the Person* view
 static void person_draw_callback(Canvas* canvas, void* context) {
     canvas_clear(canvas);
     canvas_set_font(canvas, FontSecondary);
@@ -48,6 +49,7 @@ static void person_draw_callback(Canvas* canvas, void* context) {
     canvas_draw_str(canvas, 45, 61, "Hold back to return");
 }
 
+// Manage the input events on this callback from the Person* view
 static bool person_input_callback(InputEvent* event, void* context) {
     furi_assert(context);
     Person* person = context;
@@ -58,6 +60,7 @@ static bool person_input_callback(InputEvent* event, void* context) {
     return true;
 }
 
+// Memory allocation and configuration fro the Person* structure/View
 Person* view_person_alloc() {
     Person* person = malloc(sizeof(Person));
     person->view = view_alloc();
@@ -75,12 +78,14 @@ Person* view_person_alloc() {
     return person;
 }
 
+// Freeing up memory, releasing unused strctures
 void view_person_free(Person* person) {
     furi_assert(person);
     view_free(person->view);
     free(person);
 }
 
+// Rreturn the View* of this personalized view 
 View* view_person_get_view(Person* person) {
     furi_assert(person);
     return person->view;

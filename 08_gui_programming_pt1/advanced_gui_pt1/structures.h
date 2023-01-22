@@ -11,6 +11,8 @@
 
 #pragma once
 
+// All this includes are requested for working with 
+// the Flip.x0 GUI
 #include <gui/gui.h>
 #include <gui/view.h>
 #include <gui/view_dispatcher.h>

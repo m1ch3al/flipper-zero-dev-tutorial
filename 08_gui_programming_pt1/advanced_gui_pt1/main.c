@@ -23,7 +23,7 @@
 int32_t main_fap(void* p) {
     UNUSED(p);
 
-    // I want to turn on the display
+    // I turn on the display for interact with the Notification subsystem
     NotificationApp* notifications = furi_record_open(RECORD_NOTIFICATION);
     notification_message(notifications, &sequence_display_backlight_on);
 
