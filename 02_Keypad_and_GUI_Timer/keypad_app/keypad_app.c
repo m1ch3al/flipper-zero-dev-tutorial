@@ -92,6 +92,8 @@ int32_t main_fap(void* p) {
         if(event.key == InputKeyBack) {
             break;
         }
+        // Update the screen
+        view_port_update(view_port);
     }
 
     // When you use the timer, remember to stop the timer
